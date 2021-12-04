@@ -1,0 +1,1 @@
+const API_PATH = "http://159.65.153.59:8000/hotel/hotellists";
