@@ -11,6 +11,7 @@ import {IMAGE_PATH, API_PATH} from "../../constants";
 import { withRouter } from 'next/router'
 import {hotel} from "../../services/hotel.services";
 import {getFacilities} from "../../actions/hotel";
+import Head from "next/head";
 
 
 
@@ -67,76 +68,114 @@ const HotelList = ({ hotelList, categoryInfo }) => {
     }
 
     return (
-        <div className="wrapper">
-            <div className="inner-page listing">
+        <>
+            <Head>
+                <meta charSet="UTF-8" />
+                <title>Sugar by UTH| Best Hotels in Kochi| Best deals at Sugar Business hotel Kochi</title>
+                <meta name="description"
+                      content="The tourism is in full swing for the God’s own country and the best hotels in Kochi are also ready to welcome the guests. The Sugar hotel in Kochi is a prestigious one in this list whose location itself is significant.UTH is the leading brand in the hotel business that is running many hotels and resorts all over the country and out of the country too such as Sri Lanka, Dubai and Maldives." />
+                <meta name="keywords"
+                      content="best hotels in thekkady, best hotels in kochi, best hotels in munnar, best hotels in banglore,best hotels in varanasi,best price luxury hotels in kochi "/>
+                <meta name="author" content="UTH Group Of Hotels" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Sugar by UTH| Best Hotels in Kochi| Best deals at Sugar Business hotel Kochi"  />
+                <meta property="og:description" content="The tourism is in full swing for the God’s own country and the best hotels in Kochi are also ready to welcome the guests. The Sugar hotel in Kochi is a prestigious one in this list whose location itself is significant.UTH is the leading brand in the hotel business that is running many hotels and resorts all over the country and out of the country too such as Sri Lanka, Dubai and Maldives." />
+                <meta property="og:url" content="%PUBLIC_URL%" />
+                <meta property="og:site_name" content="UTH | Group of Hotels" />
+                <meta property="og:image" content="http://159.65.153.59/site/assets/images/fav/og-image.jpg" />
+                <meta name="twitter:card" content="http://159.65.153.59/site/assets/images/fav/og-image.jpg" />
+                <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/fav/apple-icon-57x57.png" />
+                <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/fav/apple-icon-60x60.png" />
+                <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/fav/apple-icon-72x72.png" />
+                <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/fav/apple-icon-76x76.png" />
+                <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/fav/apple-icon-114x114.png" />
+                <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/fav/apple-icon-120x120.png" />
+                <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/fav/apple-icon-144x144.png" />
+                <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/fav/apple-icon-152x152.png" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/fav/apple-icon-180x180.png" />
+                <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/fav/android-icon-192x192.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/fav/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/fav/favicon-96x96.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/fav/favicon-16x16.png" />
+                <meta name="msapplication-TileImage" content="/assets/images/fav/ms-icon-144x144.png" />
+                <meta name="twitter:title" content="UTH | Group of Hotels" />
+            </Head>
 
-                <Navbar/>
+            <main>
+                <div className="wrapper">
+                    <div className="inner-page listing">
 
-                <section className="details-banner-block image-shade">
-                    {categoryInfo && categoryInfo.thumb && categoryInfo.thumb !== '' &&
-                    <img src={`${IMAGE_PATH + 'category/' + categoryInfo.thumb}`}/>
-                    }
-                    {(!categoryInfo || !categoryInfo.thumb || categoryInfo.thumb === '') &&
-                    <img src="../assets/images/banner.jpg"/>
-                    }
+                        <Navbar/>
 
-
-                    <div className="carousel-text-block">
-                        <div className="container">
-                            <h1>{categoryInfo.category}</h1>
-                        </div>
-                    </div>
-                </section>
-
-
-                <div className="listing-wrapper">
-
-                    <LeftPanel facilities={facilities} searchHotels={searchHotels}
-                               showFilterStatus={showFilterStatus}
-                               hideFilters={hideFilters}/>
-                    <div className="listing-content">
-
-                        <div className="listing-content-header">
-                            <h5>HOTELS & RESORTS</h5>
-
-                            <div className="listing-content-header-right">
-                                <p className="font-bold">{hotelList.length} Hotels found</p>
-                                <button className="filter" onClick={() => showFilters()}></button>
-                            </div>
-                        </div>
-                        {hotelList.length > 0 &&
-                        <div className="content-lister">
-                            {hotelList.map((hotel, index) =>
-                                <HotelBlock detail={hotel}/>
-                            )}
-                            {hotelList.length < total &&
-                            <div className="loadmore-block">
-                                <Link href={"/hotel-detail"}>
-                                    <nav>Load more</nav>
-                                </Link>
-                            </div>
+                        <section className="details-banner-block image-shade">
+                            {categoryInfo && categoryInfo.thumb && categoryInfo.thumb !== '' &&
+                            <img src={`${IMAGE_PATH + 'category/' + categoryInfo.thumb}`}/>
+                            }
+                            {(!categoryInfo || !categoryInfo.thumb || categoryInfo.thumb === '') &&
+                            <img src="../assets/images/banner.jpg"/>
                             }
 
+
+                            <div className="carousel-text-block">
+                                <div className="container">
+                                    <h1>{categoryInfo.category}</h1>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <div className="listing-wrapper">
+
+                            <LeftPanel facilities={facilities} searchHotels={searchHotels}
+                                       showFilterStatus={showFilterStatus}
+                                       hideFilters={hideFilters}/>
+                            <div className="listing-content">
+
+                                <div className="listing-content-header">
+                                    <h5>HOTELS & RESORTS</h5>
+
+                                    <div className="listing-content-header-right">
+                                        <p className="font-bold">{hotelList.length} Hotels found</p>
+                                        <button className="filter" onClick={() => showFilters()}></button>
+                                    </div>
+                                </div>
+                                {hotelList.length > 0 &&
+                                <div className="content-lister">
+                                    {hotelList.map((hotel, index) =>
+                                        <HotelBlock detail={hotel}/>
+                                    )}
+                                    {hotelList.length < total &&
+                                    <div className="loadmore-block">
+                                        <Link href={"/hotel-detail"}>
+                                            <nav>Load more</nav>
+                                        </Link>
+                                    </div>
+                                    }
+
+                                </div>
+                                }
+                                {hotelList.length === 0 &&
+                                <div className="coming-soon-wrapper">
+                                    <h1>Hotels will be added Soon</h1>
+                                </div>
+                                }
+                            </div>
+
                         </div>
-                        }
-                        {hotelList.length === 0 &&
-                        <div className="coming-soon-wrapper">
-                            <h1>Hotels will be added Soon</h1>
-                        </div>
-                        }
+
+                        <Footer/>
+
                     </div>
 
+                    <a id="back-to-top" href="#" className="back-to-top">
+                        <span className="top"></span>
+                    </a>
+
                 </div>
+            </main>
+        </>
 
-                <Footer/>
-
-            </div>
-
-            <a id="back-to-top" href="#" className="back-to-top">
-                <span className="top"></span>
-            </a>
-
-        </div>
 
     );
 };
